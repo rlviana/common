@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lifecycleMappingMetadata>
+	<pluginExecutions>
+		<pluginExecution>
+			<pluginExecutionFilter>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<versionRange>[1.0.0,)</versionRange>
+				<goals>
+					<goal>enforce</goal>
+				</goals>
+			</pluginExecutionFilter>
+			<action>
+				<ignore />
+			</action>
+		</pluginExecution>
+
+		<pluginExecution>
+			<pluginExecutionFilter>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<versionRange>[2.0.5,)</versionRange>
+				<goals>
+					<goal>process</goal>
+				</goals>
+			</pluginExecutionFilter>
+			<action>
+				<execute />
+			</action>
+		</pluginExecution>
+		<pluginExecution>
+			<pluginExecutionFilter>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<goals>
+					<goal>copy-dependencies</goal>
+					<goal>unpack</goal>
+				</goals>
+				<versionRange>[0.0,)</versionRange>
+			</pluginExecutionFilter>
+			<action>
+				<ignore />
+			</action>
+		</pluginExecution>
+	</pluginExecutions>
+</lifecycleMappingMetadata>

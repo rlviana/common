@@ -1,0 +1,10 @@
+bin
+.settings/
+.metadata
+*~
+*.log
+target/
+.project
+.classpath
+
+/build-qa
