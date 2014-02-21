@@ -1,0 +1,1017 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.rlviana</groupId>
+	<artifactId>rlviana-common-pom</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>rlviana-common-pom</name>
+	<description>Super POM for all my developed projects. Contains basic information shared among all of them, such as plugin versions, shared dependencies and common rules applied to all.</description>
+	<prerequisites>
+		<maven>3.0.3</maven>
+	</prerequisites>
+
+
+	<!-- Project Information -->
+	<url>http://${repository.domain}/${repository.user}/${repository.name}</url>
+	<inceptionYear>2013</inceptionYear>
+	
+	<!-- MIT License -->
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<!-- Organization information -->
+	<organization>
+		<name>Ramón López Viana</name>
+		<url>http://rlviana.wordpress.net</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Ramón López Viana</name>
+			<email>ramon.lopez.viana@gmail.com</email>
+			<roles>
+				<role>Principal Developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<!-- Environment Settings -->
+	<scm>
+		<connection>scm:git:ssh://${repository.domain}/${repository.user}/${repository.name}.git</connection>
+		<url>https://${repository.domain}/${repository.user}/${repository.name}</url>
+		<developerConnection>scm:git:ssh://${repository.domain}/${repository.user}/${repository.name}.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+	<issueManagement>
+		<url>https://${repository.domain}/${repository.user}/${repository.name}/issues</url>
+		<system>GitHub Issues related to common project</system>	
+	</issueManagement>
+	<ciManagement />
+	<mailingLists>
+		<mailingList />
+	</mailingLists>
+	<repositories></repositories>
+  	<pluginRepositories></pluginRepositories>
+	<distributionManagement>
+		<repository>
+		</repository>
+		<snapshotRepository>
+		</snapshotRepository>
+		<site>
+			<id>site-docs</id>
+			<url>file://${site-docs.url}</url>
+		</site>
+	</distributionManagement>
+  	
+	<properties>
+		<!-- SITE DOC PROPERTIES -->
+		<!-- Overwrite Expected to be a "FILE" URI, Used for site:stage-deploy -->
+		<site-docs.url>/${env.HOME}/sitedocs/${project.artifactId}</site-docs.url>
+		<!-- Best practice is to override this property in your settings.xml file; used for directory to hold cloned repository -->
+		<scmPublish.checkoutDirectory>${project.build.directory}/scmpublish</scmPublish.checkoutDirectory>
+		<!-- @OVERRIDE this property per each project -->
+		<repository.domain>github.com</repository.domain>
+		<!-- @OVERRIDE this property per each project -->
+		<repository.user>rlviana</repository.user>
+		<!-- @OVERRIDE this property per each project -->
+		<repository.name>common</repository.name>
+
+		<!-- @OVERRIDE [This is the branch that the web "pages" are located in. For GitHub, gh-pages; for BitBucket, master] -->
+		<scm-publish.scmBranch>gh-pages</scm-publish.scmBranch>
+		<!-- @OVERRIDE [SCM location for documentation repository] -->
+		<scm-publish.pubScmUrl>scm:git:git@${repository.domain}/${repository.user}/${repository.name}.git</scm-publish.pubScmUrl>
+		<scm-publish.siteDocOuputDirectory>${project.reporting.outputDirectory}</scm-publish.siteDocOuputDirectory>
+
+		<!-- PROJECT PROPERTIES -->
+		<java.source.version>1.7</java.source.version>
+		<java.target.version>1.7</java.target.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<surefire.jvm.args>-Xms256m -Xmx512m -XX:MaxPermSize=512m</surefire.jvm.args>
+
+		<!-- PLUGIN PROPERTIES -->
+		<plugin.antrun.version>1.7</plugin.antrun.version>
+		<plugin.assembly.version>2.4</plugin.assembly.version>
+		<plugin.checkstyle.version>2.10</plugin.checkstyle.version>
+		<plugin.build-helper.version>1.8</plugin.build-helper.version>
+		<plugin.clean.version>2.5</plugin.clean.version>
+		<plugin.changelog.version>2.2</plugin.changelog.version>
+		<plugin.changes.version>2.8</plugin.changes.version>
+		<plugin.cobertura.version>2.6</plugin.cobertura.version>
+		<plugin.compiler.version>3.1</plugin.compiler.version>
+		<plugin.dependency.version>2.8</plugin.dependency.version>
+		<plugin.deploy.version>2.8.1</plugin.deploy.version>
+		<plugin.eclipse.version>2.9</plugin.eclipse.version>
+		<plugin.ejb.version>2.3</plugin.ejb.version>
+		<plugin.ear.version>2.8</plugin.ear.version>
+		<plugin.enforcer.version>1.3.1</plugin.enforcer.version>
+		<plugin.failsafe.version>2.16</plugin.failsafe.version>
+		<plugin.findbugs.version>2.5.2</plugin.findbugs.version>
+		<plugin.gpg.version>1.4</plugin.gpg.version>
+		<plugin.help.version>2.2</plugin.help.version>
+		<plugin.install.version>2.5.1</plugin.install.version>
+		<plugin.jar.version>2.4</plugin.jar.version>
+		<plugin.javadoc.version>2.9.1</plugin.javadoc.version>
+		<plugin.jrebel.version>1.1.3</plugin.jrebel.version>
+		<plugin.jxr.version>2.3</plugin.jxr.version>
+		<plugin.pmd.version>3.0.1</plugin.pmd.version>
+		<plugin.project-info-reports.version>2.7</plugin.project-info-reports.version>
+		<plugin.release.version>2.4</plugin.release.version>
+		<plugin.resources.version>2.6</plugin.resources.version>
+		<plugin.scm-publish.version>1.0-beta-2</plugin.scm-publish.version>
+		<plugin.site.version>3.3</plugin.site.version>
+		<plugin.source.version>2.2.1</plugin.source.version>
+		<plugin.surefire.version>2.16</plugin.surefire.version>
+		<plugin.surefire-report.version>2.16</plugin.surefire-report.version>
+		<!-- //TODO or @todo tags in source -->
+		<plugin.taglist.version>2.4</plugin.taglist.version>
+		<plugin.wagon-ssh.version>2.2</plugin.wagon-ssh.version>
+		<plugin.wagon-webdav.version>1.0</plugin.wagon-webdav.version>
+		<plugin.war.version>2.4</plugin.war.version>
+		<plugin.versions.version>2.1</plugin.versions.version>
+		
+		<!-- Plugin configuration properties -->
+		<!-- Change Log-->
+		<!-- GitHub Changelog Parameters -->
+		<changelog.github.fileUri>${project.scm.url}/tree/master/%FILE%</changelog.github.fileUri>
+		<changelog.revision.github.fileUri>${project.scm.url}/commit</changelog.revision.github.fileUri>
+		<!-- BitBucket Changelog Parameters -->
+		<changelog.bitbucket.fileUri>${project.scm.url}/src/%REV%/%FILE%?at=master</changelog.bitbucket.fileUri>
+		<changelog.revision.bitbucket.fileUri>${project.scm.url}/commits/%REV%</changelog.revision.bitbucket.fileUri>
+		<!-- NOTE: Choose the changelog File Uri for your project. By default, 
+			this will fail if not setup -->
+		<!-- example: <changelog.fileUri>${changelog.bitbucket.fileUri}</changelog.fileUri> -->
+		<!-- @OVERRIDE ENFORCER will fail if these are not defined -->
+		<changelog.fileUri />
+		<changelog.revision.fileUri />
+
+		<!-- Skip plugin configuration. Configured in profiles -->
+		<!-- Only unit tests are run by default. -->
+		<skip.unit.tests>false</skip.unit.tests>
+		<skip.integration.tests>true</skip.integration.tests>
+		<!-- skip qa plugins. All by default -->
+		<skip.cobertura>true</skip.cobertura>
+		<skip.pmd>true</skip.pmd>
+		<skip.findbugs>true</skip.findbugs>
+		<skip.checkstyle>true</skip.checkstyle>
+		<!-- Skip plugins -->
+		<skip.enforcer>true</skip.enforcer>
+		<skip.versions>true</skip.versions>
+		<!-- Skip report -->
+		<skip.changes-report>true</skip.changes-report>
+		
+		<!-- Qa plugins configuration -->
+		<maven-checkstyle-plugin.configLocation></maven-checkstyle-plugin.configLocation>
+		<maven-pmd-plugin.configLocation></maven-pmd-plugin.configLocation>
+		<maven.findbugs-include-plugin.configLocation></maven.findbugs-include-plugin.configLocation>
+		<maven.findbugs-exclude-plugin.configLocation></maven.findbugs-exclude-plugin.configLocation>
+
+		<!-- Packaging versions -->
+		<ejb.packaging.version>3.0</ejb.packaging.version>
+		<!-- Dependencies configuration -->
+		<!-- Unit testing -->
+		<junit.version>4.11</junit.version>
+		<mockito.version>1.9.5</mockito.version>
+		<!-- Logging -->
+		<slf4j.version>1.7.5</slf4j.version>
+		<logback.version>1.0.13</logback.version>
+	</properties>
+
+	<build>
+		<extensions>
+			<extension>
+				<!-- add support for ssh/scp -->
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>${plugin.wagon-ssh.version}</version>
+			</extension>
+		</extensions>
+		<!-- Shared plugin configuration -->
+		<pluginManagement>
+			<plugins>
+				<!-- Core -->
+				<plugin>
+					<!-- Compiler plugin -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${plugin.compiler.version}</version>
+					<configuration>
+						<verbose>true</verbose>
+						<fork>true</fork>
+						<source>${java.source.version}</source>
+						<target>${java.target.version}</target>
+					</configuration>
+				</plugin>
+				<!-- Remove files generated at build-time in a project's directory -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${plugin.clean.version}</version>
+				</plugin>
+				<!-- Handles the copying of project resources to the output directory -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${plugin.resources.version}</version>
+				</plugin>
+				<!-- Execute the unit tests of an application in test phase -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${plugin.surefire.version}</version>
+				</plugin>
+				<!-- Run integration tests while the Surefire Plugins is designed to 
+					run unit tests -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${plugin.failsafe.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${plugin.install.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${plugin.deploy.version}</version>
+				</plugin>
+				<!-- Creates a jar archive of the source files of the current project -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${plugin.source.version}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<attach>true</attach>
+						<skip>false</skip>
+					</configuration>
+				</plugin>
+				<!-- Uses the Javadoc tool to generate javadocs for the specified project -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${plugin.javadoc.version}</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<attach>true</attach>
+						<skip>false</skip>
+						<failOnError>false</failOnError>
+					</configuration>
+				</plugin>
+				<!-- Includes small utility tasks -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${plugin.build-helper.version}</version>
+				</plugin>
+				<!-- Allows to run Ant tasks from within Maven -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${plugin.antrun.version}</version>
+				</plugin>
+				<!-- Packaging -->
+				<!-- Jar packaging includes manifest -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${plugin.jar.version}</version>
+					<configuration>
+						<archive>
+							<index>true</index>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<!-- Ejb packaging -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>${plugin.ejb.version}</version>
+					<configuration>
+						<ejbVersion>${ejb.packaging.version}</ejbVersion>
+						<archive>
+							<index>true</index>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<!-- Ear packaging. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>${plugin.ear.version}</version>
+					<configuration>
+						<archive>
+							<index>true</index>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<!-- War packaging -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${plugin.war.version}</version>
+					<configuration>
+						<archive>
+							<index>true</index>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<!-- Assemby. Assembly files located in src/main/assembly/assembly.xml -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${plugin.assembly.version}</version>
+					<configuration>
+						<descriptors>
+							<descriptor>src/main/assembly/assembly.xml</descriptor>
+						</descriptors>
+					</configuration>
+				</plugin>
+				<!-- Helper to gather information about the maven project -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-help-plugin</artifactId>
+					<version>${plugin.help.version}</version>
+				</plugin>
+				<!-- Provides the capability to manipulate artifacts -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${plugin.dependency.version}</version>
+				</plugin>
+				<!-- Enforcing rules -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${plugin.enforcer.version}</version>
+				</plugin>
+				<!-- QA -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${plugin.checkstyle.version}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<skip>${skip.checkstyle}</skip>
+						<configLocation>${maven-checkstyle-plugin.configLocation}</configLocation>
+						<failsOnError>true</failsOnError>
+						<enableRulesSummary>true</enableRulesSummary>
+						<includeTestSourceDirectory>false</includeTestSourceDirectory>
+					</configuration>
+					<executions>
+						<execution>
+							<id>run-checkstyle</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>checkstyle</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${plugin.pmd.version}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<skip>${skip.pmd}</skip>
+						<targetJdk>${java.target.version}</targetJdk>
+						<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+						<rulesets>
+							<ruleset>${maven-pmd-plugin.configLocation}</ruleset>
+						</rulesets>
+						<linkXRef>true</linkXRef>
+						<!-- Required to properly link JXR -->
+						<xrefLocation>${project.reporting.outputDirectory}/xref</xrefLocation>
+						<xrefTestLocation>${project.reporting.outputDirectory}/xref</xrefTestLocation>
+						<failOnViolation>true</failOnViolation>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>verify</phase>
+							<goals>
+								<goal>check</goal>
+								<goal>cpd-check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${plugin.findbugs.version}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<skip>${skip.findbugs}</skip>
+						<maxHeap>512</maxHeap>
+						<xmlOutput>true</xmlOutput>
+						<includeTests>false</includeTests>
+						<effort>max</effort>
+						<failOnError>true</failOnError>
+						<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+						<excludeFilterFile>${maven.findbugs-exclude-plugin.configLocation}</excludeFilterFile>
+						<includeFilterFile>${maven.findbugs-include-plugin.configLocation}</includeFilterFile>
+					</configuration>
+				</plugin>
+				<!--Cobertura plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>${plugin.cobertura.version}</version>
+					<configuration>
+						<skip>${skip.cobertura}</skip>
+						<formats>
+							<format>html</format>
+							<format>xml</format>
+						</formats>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>test</phase>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Checks existence of common tags in code -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>taglist-maven-plugin</artifactId>
+					<version>${plugin.taglist.version}</version>
+					<configuration>
+						<skipTestSources>true</skipTestSources>
+						<emptyComments>true</emptyComments>
+						<tagListOptions>
+							<tagClasses>
+								<tagClass>
+									<displayName>Documentation Work</displayName>
+									<tags>
+										<tag>
+											<matchString>DOCUMENT_ME</matchString>
+											<matchType>exact</matchType>
+										</tag>
+										<tag>
+											<matchString>NOT_YET_DOCUMENTED</matchString>
+											<matchType>exact</matchType>
+										</tag>
+									</tags>
+								</tagClass>
+								<tagClass>
+									<displayName>FIXME Work</displayName>
+									<tags>
+										<tag>
+											<matchString>FIXME</matchString>
+											<matchType>ignoreCase</matchType>
+										</tag>
+									</tags>
+								</tagClass>
+								<tagClass>
+									<displayName>TODO Work</displayName>
+									<tags>
+										<tag>
+											<matchString>@todo</matchString>
+											<matchType>exact</matchType>
+										</tag>
+										<tag>
+											<matchString>TODO</matchString>
+											<matchType>ignoreCase</matchType>
+										</tag>
+									</tags>
+								</tagClass>
+								<tagClass>
+									<displayName>Deprecated Items</displayName>
+									<tag>
+										<matchString>@deprecated</matchString>
+										<matchType>ignoreCase</matchType>
+									</tag>
+								</tagClass>
+							</tagClasses>
+						</tagListOptions>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${plugin.eclipse.version}</version>
+				</plugin>
+				<!-- Change log integration -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-changelog-plugin</artifactId>
+					<version>${plugin.changelog.version}</version>
+				</plugin>
+				<!-- Reports -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>${plugin.project-info-reports.version}</version>
+				</plugin>
+				<!-- Cross reference plugin for reports -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${plugin.jxr.version}</version>
+					<configuration>
+						<aggregate>true</aggregate>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>jxr</goal>
+								<goal>test-jxr</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Surefire report configuration -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>${plugin.surefire-report.version}</version>
+				</plugin>
+				<!-- Versions plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${plugin.versions.version}</version>
+				</plugin>
+				<!-- Site generation -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${plugin.site.version}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<attach>true</attach>
+						<reportPlugins>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-changes-plugin</artifactId>
+								<version>${plugin.changes.version}</version>
+								<reportSets>
+									<reportSet>
+										<reports>
+											<report>changes-report</report>
+											<!-- Since this is not accessable in the child, make this report 
+												run even if nothing there -->
+											<report>github-report</report>
+										</reports>
+									</reportSet>
+								</reportSets>
+								<configuration>
+								<skip>${skip.changes-report}</skip>
+								</configuration>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-changelog-plugin</artifactId>
+								<reportSets>
+									<reportSet>
+										<id>changelog</id>
+										<configuration>
+											<displayFileRevDetailUrl>${changelog.fileUri}</displayFileRevDetailUrl>
+											<displayChangeSetDetailUrl>${changelog.revision.fileUri}
+											</displayChangeSetDetailUrl>
+											<headingDateFormat>dd/MM/yyyy</headingDateFormat>
+											<outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+											<type>range</type>
+											<range>30</range>
+										</configuration>
+										<reports>
+											<report>changelog</report>
+										</reports>
+									</reportSet>
+									<reportSet>
+										<id>activty</id>
+										<configuration>
+											<displayFileDetailUrl>#</displayFileDetailUrl>
+											<headingDateFormat>dd/MM/yyyy</headingDateFormat>
+											<outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+											<type>range</type>
+											<range>30</range>
+										</configuration>
+										<reports>
+											<report>dev-activity</report>
+											<report>file-activity</report>
+										</reports>
+									</reportSet>
+								</reportSets>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-project-info-reports-plugin</artifactId>
+								<configuration>
+									<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+									<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+								</configuration>
+								<!-- Reports included -->
+								<reports>
+									<report>summary</report>
+									<report>index</report>
+									<report>license</report>
+									<report>project-team</report>
+									<report>dependencies</report>
+									<report>dependency-convergence</report>
+									<report>issue-tracking</report>
+									<report>scm</report>
+									<report>modules</report>
+									<report>plugins</report>
+								</reports>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-checkstyle-plugin</artifactId>
+								<!-- NOTE: This is a duplication of the configuration on the Checkstyle 
+									plugin -->
+								<configuration>
+									<configLocation>${maven-checkstyle-plugin.configLocation}</configLocation>
+									<failsOnError>false</failsOnError>
+									<enableRulesSummary>true</enableRulesSummary>
+									<includeTestSourceDirectory>true</includeTestSourceDirectory>
+								</configuration>
+								<reportSets>
+									<reportSet>
+										<reports>
+											<!-- This is for avoiding report duplication -->
+											<report>checkstyle</report>
+										</reports>
+									</reportSet>
+								</reportSets>
+								<!-- TODO: Why are there two checkstyle links, if this is removed, 
+									none are displayed, otherwise two -->
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-jxr-plugin</artifactId>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-pmd-plugin</artifactId>
+								<!-- NOTE: This is a duplication of the Configuration section on 
+									PluginManagement > PMD Plugin -->
+								<configuration>
+									<targetJdk>${java.target.version}</targetJdk>
+									<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+									<rulesets>
+										<ruleset>${maven-pmd-plugin.configLocation}</ruleset>
+									</rulesets>
+									<linkXRef>true</linkXRef>
+									<!-- Required to properly link JXR -->
+									<xrefLocation>${project.reporting.outputDirectory}/xref</xrefLocation>
+									<xrefTestLocation>${project.reporting.outputDirectory}/xref</xrefTestLocation>
+									<failOnViolation>false</failOnViolation>
+								</configuration>
+							</plugin>
+							<plugin>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>findbugs-maven-plugin</artifactId>
+								<configuration>
+									<threshold>Low</threshold><!-- High|Normal|Low|Exp|Ignore -->
+									<effort>Default</effort><!-- Min|Default|Max -->
+								</configuration>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-surefire-report-plugin</artifactId>
+								<version>${plugin.surefire.version}</version>
+							</plugin>
+
+							<plugin>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>cobertura-maven-plugin</artifactId>
+								<configuration>
+									<formats>
+										<format>html</format>
+										<format>xml</format>
+									</formats>
+								</configuration>
+							</plugin>
+
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-javadoc-plugin</artifactId>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-failsafe-plugin</artifactId>
+							</plugin>
+							<plugin>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>versions-maven-plugin</artifactId>
+								<configuration>
+								</configuration>
+								<reportSets>
+									<reportSet>
+										<reports>
+											<report>dependency-updates-report</report>
+											<report>plugin-updates-report</report>
+											<report>property-updates-report</report>
+										</reports>
+									</reportSet>
+								</reportSets>
+							</plugin>
+							<plugin>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>findbugs-maven-plugin</artifactId>
+								<!-- NOTE: This is a duplication since confguration is not inherited 
+									from PluginManagement -->
+								<configuration>
+									<maxHeap>512</maxHeap>
+									<includeTests>true</includeTests>
+									<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+									<xrefTestLocation>xref-test</xrefTestLocation>
+									<xrefLocation>xref</xrefLocation>
+								</configuration>
+							</plugin>
+							<plugin>
+								<groupId>org.codehaus.mojo</groupId>
+								<artifactId>taglist-maven-plugin</artifactId>
+								<!-- Configuration has been duplicated from PluginManagement > Plugins 
+									[taglist-maven-plugin] -->
+								<configuration>
+									<encoding>${project.build.sourceEncoding}</encoding>
+									<sourceFileLocale>en</sourceFileLocale>
+									<tagListOptions>
+										<tagClasses>
+											<tagClass>
+												<displayName>Code sections needing review</displayName>
+												<tags>
+													<tag>
+														<matchString>REVIEWREQUIRED</matchString>
+														<matchType>exact</matchType>
+													</tag>
+												</tags>
+											</tagClass>
+											<tagClass>
+												<displayName>Todo Work</displayName>
+												<tags>
+													<tag>
+														<matchString>todo</matchString>
+														<matchType>ignoreCase</matchType>
+													</tag>
+													<tag>
+														<matchString>@todo</matchString>
+														<matchType>ignoreCase</matchType>
+													</tag>
+												</tags>
+											</tagClass>
+											<tagClass>
+												<displayName>Noted Bugs</displayName>
+												<tag>
+													<matchString>fixme</matchString>
+													<matchType>ignoreCase</matchType>
+												</tag>
+											</tagClass>
+											<tagClass>
+												<displayName>Deprecated Items</displayName>
+												<tag>
+													<matchString>@deprecated</matchString>
+													<matchType>ignoreCase</matchType>
+												</tag>
+											</tagClass>
+										</tagClasses>
+									</tagListOptions>
+								</configuration>
+							</plugin>
+						</reportPlugins>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-descriptor</id>
+							<goals>
+								<goal>attach-descriptor</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<!-- Core -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<rules>
+						<requirePluginVersions>
+							<message>
+								Set plugin versions in pluginManagement section.
+							</message>
+							<banLatest>true</banLatest>
+							<banRelease>true</banRelease>
+							<banSnapshots>true</banSnapshots>
+						</requirePluginVersions>
+						<requireReleaseDeps>
+							<message>No Snapshots Allowed!</message>
+							<onlyWhenRelease>true</onlyWhenRelease>
+							<excludes />
+						</requireReleaseDeps>
+						<requireMavenVersion>
+							<version>3.0.5</version>
+						</requireMavenVersion>
+						<requireJavaVersion>
+							<version>[1.7,)</version>
+						</requireJavaVersion>
+					</rules>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+			<!-- Unit tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<!-- Includes unit tests. Unit test named *Test By convention -->
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+					<!-- Excludes integration tests. Integration Test named *IT by convention -->
+					<excludes>
+						<exclude>**/IT.java</exclude>
+					</excludes>
+					<!-- Skips unit tests if the value of skip.unit.tests property is true -->
+					<skipTests>${skip.unit.tests}</skipTests>
+				</configuration>
+			</plugin>
+			<!-- Integration tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<!-- States that both integration-test and verify goals of the Failsafe 
+						Maven plugin are executed. -->
+					<execution>
+						<id>integration-tests</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includes>
+						<include>**/*IT.java</include>
+					</includes>
+					<!-- Skips integration tests if the value of skip.integration.tests 
+						property is true -->
+					<skipTests>${skip.integration.tests}</skipTests>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<!-- Dependency management -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- modules dependencies -->
+			<!-- <dependency> <groupId>net.rlviana</groupId> <artifactId>build-qatools</artifactId> 
+				<version>${build-util.version}</version> </dependency> -->
+			<!-- Testing -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- Log base version -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+	</dependencies>
+	<profiles>
+
+		<profile>
+			<id>dev</id>
+			<properties>
+				<!-- Assings default profile id. -->
+				<build.profile.id>dev</build.profile.id>
+				<skip.integration.tests>true</skip.integration.tests>
+				<skip.unit.tests>true</skip.unit.tests>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<build.profile.id>test</build.profile.id>
+				<skip.unit.tests>false</skip.unit.tests>
+				<skip.integration.tests>false</skip.integration.tests>
+			</properties>
+		</profile>
+		<profile>
+			<id>integration-test</id>
+			<properties>
+				<!-- Used to locate the profile specific configuration file. -->
+				<build.profile.id>integration-test</build.profile.id>
+				<!-- Only integration tests are run. -->
+				<skip.integration.tests>false</skip.integration.tests>
+				<skip.unit.tests>true</skip.unit.tests>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<build.profile.id>prod</build.profile.id>
+				<skip.integration.tests>true</skip.integration.tests>
+				<skip.unit.tests>true</skip.unit.tests>
+			</properties>
+		</profile>
+		<!-- Checks if properties filter files present and treats then acording 
+			to environment -->
+		<profile>
+			<id>filter-files</id>
+			<activation>
+				<file>
+					<exists>filters/env-${build.profile.id}.properties</exists>
+				</file>
+			</activation>
+			<properties>
+				<filter.files>true</filter.files>
+			</properties>
+			<build>
+				<filters>
+					<!-- Specifies path to the properties file, which contains profile specific 
+						configuration. In this case, the configuration file is searched from profiles/dev/ 
+						directory. -->
+					<filter>filters/env-${build.profile.id}.properties</filter>
+				</filters>
+				<resources>
+					<!-- Placeholders found from files located in the configured resource 
+						directories are replaced with values found from the profile specific configuration 
+						files. -->
+					<resource>
+						<filtering>true</filtering>
+						<directory>src/main/resources</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+</project>
+  
