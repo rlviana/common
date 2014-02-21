@@ -145,7 +145,6 @@
 		<!-- NOTE: Choose the changelog File Uri for your project. By default, 
 			this will fail if not setup -->
 		<!-- example: <changelog.fileUri>${changelog.bitbucket.fileUri}</changelog.fileUri> -->
-		<!-- @OVERRIDE ENFORCER will fail if these are not defined -->
 		<changelog.fileUri />
 		<changelog.revision.fileUri />
 
