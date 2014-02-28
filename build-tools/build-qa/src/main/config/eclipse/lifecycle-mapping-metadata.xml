@@ -62,5 +62,22 @@
 				</execute>
 			</action>
 		</pluginExecution>
+				<pluginExecution>
+			<pluginExecutionFilter>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<versionRange>[0.8.3,)</versionRange>
+				<goals>
+					<goal>generate</goal>
+				</goals>
+				<phase>generate-sources</phase>
+			</pluginExecutionFilter>
+			<action>
+				<execute>
+					<runOnConfiguration>true</runOnConfiguration>
+					<runOnIncremental>true</runOnIncremental>
+				</execute>
+			</action>
+		</pluginExecution>
 	</pluginExecutions>
 </lifecycleMappingMetadata>

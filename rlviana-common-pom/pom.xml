@@ -519,11 +519,13 @@
 						</tagListOptions>
 					</configuration>
 				</plugin>
+				<!-- 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<version>${plugin.eclipse.version}</version>
 				</plugin>
+				 -->
 				<!-- Change log integration -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
